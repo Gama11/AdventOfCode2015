@@ -1,3 +1,4 @@
+import days.*;
 import utest.ITest;
 import utest.UTest;
 
@@ -13,6 +14,15 @@ class Tests implements ITest {
 	}
 
 	function specDay01() {
-		true != false;
+		0 == Day01.countFloor("(())");
+		0 == Day01.countFloor("()()");
+		3 == Day01.countFloor("(((");
+		3 == Day01.countFloor("(()(()(");
+		3 == Day01.countFloor("))(((((");
+		-1 == Day01.countFloor("())");
+		-1 == Day01.countFloor("))(");
+		-3 == Day01.countFloor(")))");
+		-3 == Day01.countFloor(")())())");
+		232 == Day01.countFloor(getData("day01"));
 	}
 }
