@@ -122,5 +122,6 @@ class Tests implements ITest {
 		"312211" == Day10.lookAndSay("111221");
 
 		360154 == Day10.lookAndSay("1113122113", 40).length;
+		5103798 == Day10.lookAndSay("1113122113", 50).length;
 	}
 }
