@@ -98,7 +98,10 @@ class Tests implements ITest {
 	}
 
 	function specDay08() {
-		12 == Day08.computeCodeMemoryDifference(getData("day08-0"));
-		1342 == Day08.computeCodeMemoryDifference(getData("day08-1"));
+		12 == Day08.computeDecodingDifference(getData("day08-0"));
+		1342 == Day08.computeDecodingDifference(getData("day08-1"));
+
+		19 == Day08.computeEncodingDifference(getData("day08-0"));
+		2074 == Day08.computeEncodingDifference(getData("day08-1"));
 	}
 }
