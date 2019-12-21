@@ -81,4 +81,18 @@ class Tests implements ITest {
 		543903 == Day06.countLitLights(getData("day06"));
 		14687245 == Day06.countLitLights2(getData("day06"));
 	}
+
+	function specDay07() {
+		var example = getData("day07-0");
+		72 == Day07.getSignal(example, "d");
+		507 == Day07.getSignal(example, "e");
+		492 == Day07.getSignal(example, "f");
+		114 == Day07.getSignal(example, "g");
+		65412 == Day07.getSignal(example, "h");
+		65079 == Day07.getSignal(example, "i");
+		123 == Day07.getSignal(example, "x");
+		456 == Day07.getSignal(example, "y");
+
+		16076 == Day07.getSignal(getData("day07-1"), "a");
+	}
 }
