@@ -114,6 +114,7 @@ class Tests implements ITest {
 		804 == Day09.findRoute(getData("day09-1"), Longest);
 	}
 
+	@Ignored
 	function specDay10() {
 		"11" == Day10.lookAndSay("1");
 		"21" == Day10.lookAndSay("11");
@@ -123,5 +124,18 @@ class Tests implements ITest {
 
 		360154 == Day10.lookAndSay("1113122113", 40).length;
 		5103798 == Day10.lookAndSay("1113122113", 50).length;
+	}
+
+	@Ignored
+	function specDay11() {
+		false == Day11.isValidPassword("hijklmmn");
+		false == Day11.isValidPassword("abbceffg");
+		false == Day11.isValidPassword("abbcegjk");
+		true == Day11.isValidPassword("abcddfee");
+		"abcdffaa" == Day11.findNextValidPassword("abcdefgh");
+		"ghjaabcc" == Day11.findNextValidPassword("ghijklmn");
+
+		"hxbxxyzz" == Day11.findNextValidPassword("hxbxwxba");
+		"hxcaabcc" == Day11.findNextValidPassword("hxbxxyzz");
 	}
 }
