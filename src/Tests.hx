@@ -105,8 +105,12 @@ class Tests implements ITest {
 		2074 == Day08.computeEncodingDifference(getData("day08-1"));
 	}
 
+	@Ignored
 	function specDay09() {
-		605 == Day09.findShortestRoute(getData("day09-0"));
-		207 == Day09.findShortestRoute(getData("day09-1"));
+		605 == Day09.findRoute(getData("day09-0"), Shortest);
+		207 == Day09.findRoute(getData("day09-1"), Shortest);
+
+		982 == Day09.findRoute(getData("day09-0"), Longest);
+		804 == Day09.findRoute(getData("day09-1"), Longest);
 	}
 }

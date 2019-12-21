@@ -22,38 +22,54 @@ class Day09 {
 		return distances;
 	}
 
-	public static function findShortestRoute(input:String):Int {
+	public static function findRoute(input:String, routeKind:RouteKind):Int {
 		var distances = parse(input);
 		function size<T>(map:Map<String, T>) {
 			return [for (_ in map) _].length;
 		}
-		var starts = [for (location in distances.keys()) new State(location, [])];
-		return AStar.search(starts, s -> size(distances) == size(s.visited), s -> size(distances) - size(s.visited), function(state) {
+		var starts = [for (location in distances.keys()) new State(location, [], 0)];
+		var maxDistance = 0;
+		var result = AStar.search(starts, function(state) {
+			return if (routeKind == Shortest) {
+				size(distances) == size(state.visited);
+			} else {
+				maxDistance = Std.int(Math.max(maxDistance, state.distanceTraveled));
+				false;
+			}
+		}, s -> size(distances) - size(s.visited), function(state) {
 			var moves = [];
 			for (target => distance in distances[state.location]) {
 				if (!state.visited[target]) {
 					moves.push({
 						cost: distance,
-						state: new State(target, state.visited.copy())
+						state: new State(target, state.visited.copy(), state.distanceTraveled + distance)
 					});
 				}
 			}
 			return moves;
-		}).score;
+		});
+		return if (routeKind == Shortest) result.score else maxDistance;
 	}
 }
 
 private class State {
 	public final location:String;
 	public final visited:Map<String, Bool>;
+	public final distanceTraveled:Int;
 
-	public function new(location, visited) {
+	public function new(location, visited, distanceTraveled) {
 		this.location = location;
 		this.visited = visited;
+		this.distanceTraveled = distanceTraveled;
 		visited[location] = true;
 	}
 
 	public function hashCode() {
 		return location + " " + visited;
 	}
+}
+
+enum RouteKind {
+	Shortest;
+	Longest;
 }
