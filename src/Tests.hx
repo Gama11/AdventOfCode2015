@@ -51,4 +51,13 @@ class Tests implements ITest {
 		11 == Day03.countHousesWithPresents2("^v^v^v^v^v");
 		2639 == Day03.countHousesWithPresents2(getData("day03"));
 	}
+
+	@Ignored
+	function specDay04() {
+		609043 == Day04.mineAdventCoins("abcdef", 5);
+		1048970 == Day04.mineAdventCoins("pqrstuv", 5);
+		117946 == Day04.mineAdventCoins("ckczppom", 5);
+
+		3938038 == Day04.mineAdventCoins("ckczppom", 6);
+	}
 }
