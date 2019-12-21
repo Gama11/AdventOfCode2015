@@ -25,6 +25,7 @@ class Day07 {
 	public static function getSignal(input:String, wire:Wire):Int {
 		var circuit = parse(input);
 		var signals = new Map<Wire, Int>();
+		var maxValue = Std.int(Math.pow(2, 16));
 		function signal(connnection:Connection):Int {
 			function wire(w:Wire) {
 				var value = signals[w];
@@ -40,11 +41,15 @@ class Day07 {
 				case And(a, b): signal(a) & signal(b);
 				case Or(a, b): signal(a) | signal(b);
 				case Lshift(a, b): signal(a) << signal(b);
-				case Rshift(a, b): signal(a) >>> signal(b);
-				case Not(a): Std.int(Math.pow(2, 16)) - signal(a) - 1;
+				case Rshift(a, b): signal(a) >> signal(b);
+				case Not(a): maxValue - signal(a) - 1;
 			}
 		}
 		return signal(circuit[wire]);
+	}
+
+	public static function getSignal2(input:String):Int {
+		return getSignal(input + '\n${getSignal(input, "a")} -> b', "a");
 	}
 }
 
