@@ -75,4 +75,8 @@ class Tests implements ITest {
 		false == Day05.isNiceString2("ieodomkazucvgmuy");
 		55 == Day05.countNiceStrings(getData("day05"), Day05.isNiceString2);
 	}
+
+	function specDay06() {
+		543903 == Day06.countLitLights(getData("day06"));
+	}
 }

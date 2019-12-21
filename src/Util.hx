@@ -59,7 +59,7 @@ class Util {
 }
 
 class StaticExtensions {
-	public static function matchedInt(reg:EReg, n:Int):Null<Int> {
+	public static function int(reg:EReg, n:Int):Null<Int> {
 		return Std.parseInt(reg.matched(n));
 	}
 
