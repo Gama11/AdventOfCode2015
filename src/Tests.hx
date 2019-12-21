@@ -148,7 +148,12 @@ class Tests implements ITest {
 		0 == Day12.sumNumbers('[-1,{"a":1}]');
 		0 == Day12.sumNumbers('[]');
 		0 == Day12.sumNumbers('{}');
+		111754 == Day12.sumNumbers(getData("day12"));
 
-		0 == Day12.sumNumbers(getData("day12"));
+		6 == Day12.sumNonRedNumbers('[1,2,3]');
+		4 == Day12.sumNonRedNumbers('[1,{"c":"red","b":2},3]');
+		0 == Day12.sumNonRedNumbers('{"d":"red","e":[1,2,3,4],"f":5}');
+		6 == Day12.sumNonRedNumbers('[1,"red",5]');
+		65402 == Day12.sumNonRedNumbers(getData("day12"));
 	}
 }
