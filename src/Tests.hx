@@ -156,4 +156,9 @@ class Tests implements ITest {
 		6 == Day12.sumNonRedNumbers('[1,"red",5]');
 		65402 == Day12.sumNonRedNumbers(getData("day12"));
 	}
+
+	function specDay13() {
+		330 == Day13.findOptimalNetHappiness(getData("day13-0"));
+		664 == Day13.findOptimalNetHappiness(getData("day13-1"));
+	}
 }

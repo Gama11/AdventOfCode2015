@@ -21,7 +21,7 @@ class Day12 {
 				return 0;
 			} else if (Std.is(object, Array)) {
 				var array:Array<Dynamic> = object;
-				return array.map(item -> sum(item)).sum();
+				return array.map(sum).sum();
 			} else {
 				var access:DynamicAccess<Dynamic> = object;
 				var result = 0;

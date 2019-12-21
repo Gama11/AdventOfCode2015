@@ -119,6 +119,23 @@ class StaticExtensions {
 		return result;
 	}
 
+	public static function permutations<T>(a:Array<T>):Array<Array<T>> {
+		if (a.length == 2) {
+			return [a, [a[1], a[0]]];
+		} else {
+			var list = [];
+			for (item in a) {
+				var copy = a.copy();
+				copy.remove(item);
+				for (permutation in permutations(copy)) {
+					permutation.unshift(item);
+					list.push(permutation);
+				}
+			}
+			return list;
+		}
+	}
+
 	public static function size<K:{function hashCode():Int;}, V>(map:HashMap<K, V>):Int {
 		return [for (_ in map) _].length;
 	}
