@@ -16,16 +16,21 @@ class Day14 {
 		});
 	}
 
-	public static function calculateWinningDistance(input:String, seconds:Int):Int {
+	public static function calculateWinningScore(input:String, seconds:Int, scoringSystem:ScoringSystem):Int {
 		var reindeerStats = parse(input);
 		var raceStatus = [
 			for (reindeer in reindeerStats)
 				reindeer => {
 					distance: 0,
 					flying: true,
-					timeElapsed: 0
+					timeElapsed: 0,
+					points: 0
 				}
 		];
+		var statuses = [for (status in raceStatus) status];
+		function furthtestReindeer() {
+			return statuses.max(s -> s.distance);
+		}
 		for (_ in 0...seconds) {
 			for (reindeer in reindeerStats) {
 				var status = raceStatus[reindeer];
@@ -39,8 +44,13 @@ class Day14 {
 					status.timeElapsed = 0;
 				}
 			}
+			if (scoringSystem == New) {
+				for (status in furthtestReindeer().list) {
+					status.points++;
+				}
+			}
 		}
-		return [for (status in raceStatus) status].max(s -> s.distance).value;
+		return if (scoringSystem == Old) furthtestReindeer().value else statuses.max(s -> s.points).value;
 	}
 }
 
@@ -49,4 +59,9 @@ private typedef Reindeer = {
 	final speed:Int;
 	final flyingTime:Int;
 	final restTime:Int;
+}
+
+enum ScoringSystem {
+	Old;
+	New;
 }

@@ -164,7 +164,10 @@ class Tests implements ITest {
 	}
 
 	function specDay14() {
-		1120 == Day14.calculateWinningDistance(getData("day14-0"), 1000);
-		2655 == Day14.calculateWinningDistance(getData("day14-1"), 2503);
+		1120 == Day14.calculateWinningScore(getData("day14-0"), 1000, Old);
+		2655 == Day14.calculateWinningScore(getData("day14-1"), 2503, Old);
+
+		689 == Day14.calculateWinningScore(getData("day14-0"), 1000, New);
+		1059 == Day14.calculateWinningScore(getData("day14-1"), 2503, New);
 	}
 }
