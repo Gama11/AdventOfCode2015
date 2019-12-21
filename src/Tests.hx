@@ -96,4 +96,9 @@ class Tests implements ITest {
 		16076 == Day07.getSignal(getData("day07-1"), "a");
 		2797 == Day07.getSignal2(getData("day07-1"));
 	}
+
+	function specDay08() {
+		12 == Day08.computeCodeMemoryDifference(getData("day08-0"));
+		1342 == Day08.computeCodeMemoryDifference(getData("day08-1"));
+	}
 }
