@@ -158,7 +158,8 @@ class Tests implements ITest {
 	}
 
 	function specDay13() {
-		330 == Day13.findOptimalNetHappiness(getData("day13-0"));
-		664 == Day13.findOptimalNetHappiness(getData("day13-1"));
+		330 == Day13.findOptimalNetHappiness(getData("day13-0"), false);
+		664 == Day13.findOptimalNetHappiness(getData("day13-1"), false);
+		640 == Day13.findOptimalNetHappiness(getData("day13-1"), true);
 	}
 }

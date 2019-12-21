@@ -25,9 +25,16 @@ class Day13 {
 		return potentialHappiness;
 	}
 
-	public static function findOptimalNetHappiness(input:String):Int {
+	public static function findOptimalNetHappiness(input:String, includeMyself:Bool):Int {
 		var potentialHappiness = parse(input);
 		var names = [for (name in potentialHappiness.keys()) name];
+		if (includeMyself) {
+			potentialHappiness["Me"] = [for (name in names) name => 0];
+			for (name in names) {
+				potentialHappiness[name]["Me"] = 0;
+			}
+			names.push("Me");
+		}
 		return names.permutations().map(function(arrangement) {
 			var sum = 0;
 			for (i in 0...arrangement.length) {
