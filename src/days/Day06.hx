@@ -25,22 +25,44 @@ class Day06 {
 		});
 	}
 
-	public static function countLitLights(input:String):Int {
-		var lights = new HashMap<Point, Bool>();
+	static function processInstructions(input:String, process:(pos:Point, action:Action) -> Void) {
 		for (instruction in parse(input)) {
 			var area = instruction.area;
 			for (x in area.min.x...area.max.x + 1) {
 				for (y in area.min.y...area.max.y + 1) {
-					var pos = new Point(x, y);
-					lights.set(pos, switch instruction.action {
-						case Toggle: !lights.get(pos);
-						case TurnOn: true;
-						case TurnOff: false;
-					});
+					process(new Point(x, y), instruction.action);
 				}
 			}
 		}
+	}
+
+	public static function countLitLights(input:String):Int {
+		var lights = new HashMap<Point, Bool>();
+		processInstructions(input, function(pos, action) {
+			lights.set(pos, switch action {
+				case Toggle: !lights.get(pos);
+				case TurnOn: true;
+				case TurnOff: false;
+			});
+		});
 		return [for (light in lights) if (light) light].length;
+	}
+
+	public static function countLitLights2(input:String):Int {
+		var lights = new HashMap<Point, Int>();
+		processInstructions(input, function(pos, action) {
+			var brightness = lights.get(pos);
+			if (brightness == null) {
+				brightness = 0;
+			}
+			lights.set(pos, brightness + switch action {
+				case Toggle: 2;
+				case TurnOn: 1;
+				case TurnOff if (brightness > 0): -1;
+				case _: 0;
+			});
+		});
+		return [for (brightness in lights) brightness].sum();
 	}
 }
 
