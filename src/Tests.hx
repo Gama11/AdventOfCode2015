@@ -104,4 +104,9 @@ class Tests implements ITest {
 		19 == Day08.computeEncodingDifference(getData("day08-0"));
 		2074 == Day08.computeEncodingDifference(getData("day08-1"));
 	}
+
+	function specDay09() {
+		605 == Day09.findShortestRoute(getData("day09-0"));
+		207 == Day09.findShortestRoute(getData("day09-1"));
+	}
 }
