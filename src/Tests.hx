@@ -45,5 +45,10 @@ class Tests implements ITest {
 		4 == Day03.countHousesWithPresents("^>v<");
 		2 == Day03.countHousesWithPresents("^v^v^v^v^v");
 		2565 == Day03.countHousesWithPresents(getData("day03"));
+
+		3 == Day03.countHousesWithPresents2("^v");
+		3 == Day03.countHousesWithPresents2("^>v<");
+		11 == Day03.countHousesWithPresents2("^v^v^v^v^v");
+		2639 == Day03.countHousesWithPresents2(getData("day03"));
 	}
 }

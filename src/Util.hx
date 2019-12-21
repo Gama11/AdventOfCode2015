@@ -118,6 +118,10 @@ class StaticExtensions {
 		}
 		return result;
 	}
+
+	public static function size<K:{function hashCode():Int;}, V>(map:HashMap<K, V>):Int {
+		return [for (_ in map) _].length;
+	}
 }
 
 class Point implements Hashable {
