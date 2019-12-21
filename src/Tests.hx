@@ -60,4 +60,13 @@ class Tests implements ITest {
 
 		3938038 == Day04.mineAdventCoins("ckczppom", 6);
 	}
+
+	function specDay05() {
+		true == Day05.isNiceString("ugknbfddgicrmopn");
+		true == Day05.isNiceString("aaa");
+		false == Day05.isNiceString("jchzalrnumimnmhp");
+		false == Day05.isNiceString("haegwjzuvuyypxyu");
+		false == Day05.isNiceString("dvszwmarrgswjxmb");
+		255 == Day05.countNiceStrings(getData("day05"));
+	}
 }
