@@ -113,4 +113,14 @@ class Tests implements ITest {
 		982 == Day09.findRoute(getData("day09-0"), Longest);
 		804 == Day09.findRoute(getData("day09-1"), Longest);
 	}
+
+	function specDay10() {
+		"11" == Day10.lookAndSay("1");
+		"21" == Day10.lookAndSay("11");
+		"1211" == Day10.lookAndSay("21");
+		"111221" == Day10.lookAndSay("1211");
+		"312211" == Day10.lookAndSay("111221");
+
+		360154 == Day10.lookAndSay("1113122113", 40).length;
+	}
 }
