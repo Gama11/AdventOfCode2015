@@ -162,4 +162,9 @@ class Tests implements ITest {
 		664 == Day13.findOptimalNetHappiness(getData("day13-1"), false);
 		640 == Day13.findOptimalNetHappiness(getData("day13-1"), true);
 	}
+
+	function specDay14() {
+		1120 == Day14.calculateWinningDistance(getData("day14-0"), 1000);
+		2655 == Day14.calculateWinningDistance(getData("day14-1"), 2503);
+	}
 }
