@@ -67,6 +67,12 @@ class Tests implements ITest {
 		false == Day05.isNiceString("jchzalrnumimnmhp");
 		false == Day05.isNiceString("haegwjzuvuyypxyu");
 		false == Day05.isNiceString("dvszwmarrgswjxmb");
-		255 == Day05.countNiceStrings(getData("day05"));
+		255 == Day05.countNiceStrings(getData("day05"), Day05.isNiceString);
+
+		true == Day05.isNiceString2("qjhvhtzxzqqjkmpb");
+		true == Day05.isNiceString2("xxyxx");
+		false == Day05.isNiceString2("uurcxstgmygtbstg");
+		false == Day05.isNiceString2("ieodomkazucvgmuy");
+		55 == Day05.countNiceStrings(getData("day05"), Day05.isNiceString2);
 	}
 }
