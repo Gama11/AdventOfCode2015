@@ -138,4 +138,17 @@ class Tests implements ITest {
 		"hxbxxyzz" == Day11.findNextValidPassword("hxbxwxba");
 		"hxcaabcc" == Day11.findNextValidPassword("hxbxxyzz");
 	}
+
+	function specDay12() {
+		6 == Day12.sumNumbers('[1,2,3]');
+		6 == Day12.sumNumbers('{"a":2,"b":4}');
+		3 == Day12.sumNumbers('[[[3]]]');
+		3 == Day12.sumNumbers('{"a":{"b":4},"c":-1}');
+		0 == Day12.sumNumbers('{"a":[-1,1]}');
+		0 == Day12.sumNumbers('[-1,{"a":1}]');
+		0 == Day12.sumNumbers('[]');
+		0 == Day12.sumNumbers('{}');
+
+		0 == Day12.sumNumbers(getData("day12"));
+	}
 }
