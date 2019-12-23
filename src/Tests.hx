@@ -170,4 +170,9 @@ class Tests implements ITest {
 		689 == Day14.calculateWinningScore(getData("day14-0"), 1000, New);
 		1059 == Day14.calculateWinningScore(getData("day14-1"), 2503, New);
 	}
+
+	function specDay15() {
+		62842880 == Day15.findHighestScoringCookie(getData("day15-0"));
+		18965440 == Day15.findHighestScoringCookie(getData("day15-1"));
+	}
 }
