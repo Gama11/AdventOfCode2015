@@ -1,6 +1,7 @@
 import days.*;
 import utest.ITest;
 import utest.UTest;
+import sys.io.File;
 
 class Tests implements ITest {
 	static function main() {
@@ -174,5 +175,8 @@ class Tests implements ITest {
 	function specDay15() {
 		62842880 == Day15.findHighestScoringCookie(getData("day15-0"));
 		18965440 == Day15.findHighestScoringCookie(getData("day15-1"));
+
+		File.saveContent("export/solveDay15.py", Day15.generateSolver(getData("day15-1")));
+		Sys.command("python3 export/solveDay15.py"); // 15862900
 	}
 }
