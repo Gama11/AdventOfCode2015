@@ -172,11 +172,21 @@ class Tests implements ITest {
 		1059 == Day14.calculateWinningScore(getData("day14-1"), 2503, New);
 	}
 
+	@Ignored
 	function specDay15() {
 		62842880 == Day15.findHighestScoringCookie(getData("day15-0"));
 		18965440 == Day15.findHighestScoringCookie(getData("day15-1"));
 
 		File.saveContent("export/solveDay15.py", Day15.generateSolver(getData("day15-1")));
 		Sys.command("python3 export/solveDay15.py"); // 15862900
+	}
+
+	function specDay16() {
+		var query = [
+			"children" => 3, "cats" => 7, "samoyeds" => 2, "pomeranians" => 3, "akitas" => 0, "vizslas" => 0, "goldfish" => 5, "trees" => 3, "cars" => 2,
+			"perfumes" => 1,
+		];
+		40 == Day16.findSueNumber(getData("day16"), query);
+		241 == Day16.findRealSueNumber(getData("day16"), query);
 	}
 }
