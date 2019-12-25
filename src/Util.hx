@@ -54,7 +54,7 @@ class Util {
 	}
 
 	public static function renderPointHash<T>(map:HashMap<Point, T>, render:T->String, empty = " "):String {
-		return renderPointGrid([for (p in map.keys()) p], p -> render(map.get(p)), empty);
+		return renderPointGrid([for (p in map.keys()) p], p -> render(map[p]), empty);
 	}
 }
 

@@ -39,11 +39,11 @@ class Day06 {
 	public static function countLitLights(input:String):Int {
 		var lights = new HashMap<Point, Bool>();
 		processInstructions(input, function(pos, action) {
-			lights.set(pos, switch action {
-				case Toggle: !lights.get(pos);
+			lights[pos] = switch action {
+				case Toggle: !lights[pos];
 				case TurnOn: true;
 				case TurnOff: false;
-			});
+			};
 		});
 		return [for (light in lights) if (light) light].length;
 	}
@@ -51,16 +51,16 @@ class Day06 {
 	public static function countLitLights2(input:String):Int {
 		var lights = new HashMap<Point, Int>();
 		processInstructions(input, function(pos, action) {
-			var brightness = lights.get(pos);
+			var brightness = lights[pos];
 			if (brightness == null) {
 				brightness = 0;
 			}
-			lights.set(pos, brightness + switch action {
+			lights[pos] = brightness + switch action {
 				case Toggle: 2;
 				case TurnOn: 1;
 				case TurnOff if (brightness > 0): -1;
 				case _: 0;
-			});
+			};
 		});
 		return [for (brightness in lights) brightness].sum();
 	}

@@ -19,10 +19,10 @@ class Day03 {
 	public static function countHousesWithPresents(input:String):Int {
 		var pos = new Point(0, 0);
 		var map = new HashMap<Point, Bool>();
-		map.set(pos, true);
+		map[pos] = true;
 		for (dir in parse(input)) {
 			pos += dir;
-			map.set(pos, true);
+			map[pos] = true;
 		}
 		return map.size();
 	}
@@ -32,13 +32,15 @@ class Day03 {
 		var roboSanta = new Point(0, 0);
 		var santasTurn = true;
 		var map = new HashMap<Point, Bool>();
-		map.set(santa, true);
+		map[santa] = true;
 		for (dir in parse(input)) {
-			map.set(if (santasTurn) {
-				santa += dir;
-			} else {
-				roboSanta += dir;
-			}, true);
+			map[
+				if (santasTurn) {
+					santa += dir;
+				} else {
+					roboSanta += dir;
+				}
+			] = true;
 			santasTurn = !santasTurn;
 		}
 		return map.size();

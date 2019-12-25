@@ -5,19 +5,19 @@ class AStar {
 	public static function search<T:State>(starts:Array<T>, isGoal:T->Bool, score:T->Int, getMoves:T->Array<Move<T>>):Null<Result<T>> {
 		var scores = new Map<String, Score>();
 		for (start in starts) {
-			scores.set(start.hashCode(), {
+			scores[start.hashCode()] = {
 				g: 0,
 				f: score(start)
-			});
+			};
 		}
 		var closedSet = new Map<String, Bool>();
 		var openSet = new PriorityQueue(1, true, [for (start in starts) new PrioritizedItem(start, score(start))]);
 
 		while (openSet.size > 0) {
 			var current = openSet.dequeue().item;
-			closedSet.set(current.hashCode(), true);
+			closedSet[current.hashCode()] = true;
 
-			var currentScore = scores.get(current.hashCode()).g;
+			var currentScore = scores[current.hashCode()].g;
 			if (isGoal(current)) {
 				return {
 					score: currentScore,
@@ -29,14 +29,14 @@ class AStar {
 				if (closedSet.exists(move.state.hashCode())) {
 					continue;
 				}
-				var node = scores.get(move.state.hashCode());
+				var node = scores[move.state.hashCode()];
 				var scoreAfterMove = currentScore + move.cost;
 				if (node == null || node.g > scoreAfterMove) {
 					var score = {
 						g: scoreAfterMove,
 						f: scoreAfterMove + score(move.state)
 					};
-					scores.set(move.state.hashCode(), score);
+					scores[move.state.hashCode()] = score;
 					openSet.enqueue(new PrioritizedItem(move.state, score.f));
 				}
 			}
