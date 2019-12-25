@@ -21,7 +21,7 @@ class Day03 {
 		var map = new HashMap<Point, Bool>();
 		map.set(pos, true);
 		for (dir in parse(input)) {
-			pos = pos.add(dir);
+			pos += dir;
 			map.set(pos, true);
 		}
 		return map.size();
@@ -35,9 +35,9 @@ class Day03 {
 		map.set(santa, true);
 		for (dir in parse(input)) {
 			map.set(if (santasTurn) {
-				santa = santa.add(dir);
+				santa += dir;
 			} else {
-				roboSanta = roboSanta.add(dir);
+				roboSanta += dir;
 			}, true);
 			santasTurn = !santasTurn;
 		}
