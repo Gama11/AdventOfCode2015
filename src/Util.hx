@@ -1,3 +1,4 @@
+import haxe.ds.ReadOnlyArray;
 import haxe.ds.HashMap;
 import polygonal.ds.Prioritizable;
 import haxe.Int64;
@@ -55,6 +56,17 @@ class Util {
 
 	public static function renderPointHash<T>(map:HashMap<Point, T>, render:T->String, empty = " "):String {
 		return renderPointGrid([for (p in map.keys()) p], p -> render(map[p]), empty);
+	}
+
+	public static function parseGrid(input:String):HashMap<Point, String> {
+		var grid = input.split("\n").map(line -> line.split(""));
+		var result = new HashMap();
+		for (y in 0...grid.length) {
+			for (x in 0...grid[y].length) {
+				result[new Point(x, y)] = grid[y][x];
+			}
+		}
+		return result;
 	}
 }
 
@@ -227,21 +239,24 @@ private class PointImpl implements Hashable {
 	}
 }
 
+@:forward(x, y)
 abstract Direction(Point) to Point {
 	public static final Left = new Direction(-1, 0);
 	public static final Up = new Direction(0, -1);
 	public static final Down = new Direction(0, 1);
 	public static final Right = new Direction(1, 0);
 
-	private function new(x:Int, y:Int) {
+	public static final horizonals = [Left, Up, Right, Down];
+	public static final diagonals = [Left + Up, Right + Up, Left + Down, Right + Down];
+	public static final all = horizonals.concat(diagonals);
+
+	private inline function new(x:Int, y:Int) {
 		this = new Point(x, y);
 	}
 
-	public static final directions = [Left, Up, Right, Down];
-
 	public function rotate(by:Int):Direction {
-		var i = directions.indexOf((cast this : Direction)) + by;
-		return directions[Util.mod(i, directions.length)];
+		var i = horizonals.indexOf((cast this : Direction)) + by;
+		return horizonals[Util.mod(i, horizonals.length)];
 	}
 
 	public function toString() {
@@ -252,6 +267,10 @@ abstract Direction(Point) to Point {
 			case Right: "Right";
 			case _: "unknown direction";
 		}
+	}
+
+	@:op(A + B) function add(dir:Direction):Direction {
+		return new Direction(this.x + dir.x, this.y + dir.y);
 	}
 }
 

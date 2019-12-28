@@ -198,4 +198,9 @@ class Tests implements ITest {
 		3 == Day17.countCombinationsWithLeastContainers(getData("day17-0"), 25);
 		18 == Day17.countCombinationsWithLeastContainers(getData("day17-1"), 150);
 	}
+
+	function specDay18() {
+		4 == Day18.countLitLights(getData("day18-0"), 4);
+		814 == Day18.countLitLights(getData("day18-1"), 100);
+	}
 }
