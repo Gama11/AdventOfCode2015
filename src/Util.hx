@@ -58,7 +58,7 @@ class Util {
 		return renderPointGrid([for (p in map.keys()) p], p -> render(map[p]), empty);
 	}
 
-	public static function parseGrid(input:String):HashMap<Point, String> {
+	public static function parseGrid(input:String) {
 		var grid = input.split("\n").map(line -> line.split(""));
 		var result = new HashMap();
 		for (y in 0...grid.length) {
@@ -66,7 +66,11 @@ class Util {
 				result[new Point(x, y)] = grid[y][x];
 			}
 		}
-		return result;
+		return {
+			map: result,
+			width: grid[0].length,
+			height: grid.length
+		};
 	}
 }
 

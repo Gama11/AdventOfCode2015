@@ -200,7 +200,10 @@ class Tests implements ITest {
 	}
 
 	function specDay18() {
-		4 == Day18.countLitLights(getData("day18-0"), 4);
-		814 == Day18.countLitLights(getData("day18-1"), 100);
+		4 == Day18.countLitLights(getData("day18-0"), 4, false);
+		814 == Day18.countLitLights(getData("day18-1"), 100, false);
+
+		17 == Day18.countLitLights(getData("day18-0"), 5, true);
+		924 == Day18.countLitLights(getData("day18-1"), 100, true);
 	}
 }
