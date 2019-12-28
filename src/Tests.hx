@@ -206,4 +206,9 @@ class Tests implements ITest {
 		17 == Day18.countLitLights(getData("day18-0"), 5, true);
 		924 == Day18.countLitLights(getData("day18-1"), 100, true);
 	}
+
+	function specDay19() {
+		4 == Day19.countDistinctMolecules(getData("day19-0"));
+		518 == Day19.countDistinctMolecules(getData("day19-1"));
+	}
 }
