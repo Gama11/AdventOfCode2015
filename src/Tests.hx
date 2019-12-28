@@ -189,4 +189,9 @@ class Tests implements ITest {
 		40 == Day16.findSueNumber(getData("day16"), query);
 		241 == Day16.findRealSueNumber(getData("day16"), query);
 	}
+
+	function specDay17() {
+		4 == Day17.countContainerCombinations(getData("day17-0"), 25);
+		1304 == Day17.countContainerCombinations(getData("day17-1"), 150);
+	}
 }
