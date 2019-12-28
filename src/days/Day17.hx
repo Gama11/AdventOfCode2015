@@ -1,7 +1,7 @@
 package days;
 
 class Day17 {
-	public static function countContainerCombinations(input:String, target:Int):Int {
+	static function getContainerCombinations(input:String, target:Int):Array<String> {
 		var sizes = input.split("\n").map(Std.parseInt);
 		var combinations = new Map<String, Bool>();
 		var explored = new Map<String, Bool>();
@@ -25,6 +25,14 @@ class Day17 {
 			}
 		}
 		search([], [for (i in 0...sizes.length) i]);
-		return [for (_ in combinations) _].length;
+		return [for (combination in combinations.keys()) combination];
+	}
+
+	public static function countContainerCombinations(input:String, target:Int):Int {
+		return getContainerCombinations(input, target).length;
+	}
+
+	public static function countCombinationsWithLeastContainers(input:String, target:Int):Int {
+		return getContainerCombinations(input, target).min(c -> c.split(",").length).list.length;
 	}
 }

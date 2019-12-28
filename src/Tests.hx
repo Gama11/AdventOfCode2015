@@ -190,8 +190,12 @@ class Tests implements ITest {
 		241 == Day16.findRealSueNumber(getData("day16"), query);
 	}
 
+	@Ignored
 	function specDay17() {
 		4 == Day17.countContainerCombinations(getData("day17-0"), 25);
 		1304 == Day17.countContainerCombinations(getData("day17-1"), 150);
+
+		3 == Day17.countCombinationsWithLeastContainers(getData("day17-0"), 25);
+		18 == Day17.countCombinationsWithLeastContainers(getData("day17-1"), 150);
 	}
 }
