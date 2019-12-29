@@ -1,7 +1,8 @@
 import days.*;
+import days.Day21;
+import sys.io.File;
 import utest.ITest;
 import utest.UTest;
-import sys.io.File;
 
 class Tests implements ITest {
 	static function main() {
@@ -223,5 +224,10 @@ class Tests implements ITest {
 
 		776160 == Day20.findLowestHouseNumber(33100000);
 		786240 == Day20.findLowestHouseNumber2(33100000);
+	}
+
+	function specDay21() {
+		Player == Day21.findWinner({hitPoints: 8, damage: 5, armor: 5}, {hitPoints: 12, damage: 7, armor: 2});
+		91 == Day21.findMinimumGoldToWin(getData("day20"), {hitPoints: 100, damage: 8, armor: 2});
 	}
 }
