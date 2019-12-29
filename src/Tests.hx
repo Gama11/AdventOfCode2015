@@ -252,7 +252,8 @@ class Tests implements ITest {
 	}
 
 	function specDay23() {
-		2 == Day23.execute(getData("day23-0"))[A];
-		170 == Day23.execute(getData("day23-1"))[B];
+		2 == Day23.execute(getData("day23-0"), 0)[A];
+		170 == Day23.execute(getData("day23-1"), 0)[B];
+		247 == Day23.execute(getData("day23-1"), 1)[B];
 	}
 }

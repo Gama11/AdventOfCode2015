@@ -16,9 +16,9 @@ class Day23 {
 		});
 	}
 
-	public static function execute(input:String):Map<Register, Int> {
+	public static function execute(input:String, a:Int):Map<Register, Int> {
 		var program = parse(input);
-		var registers = [A => 0, B => 0];
+		var registers = [A => a, B => 0];
 		var i = 0;
 		while (i >= 0 && i < program.length) {
 			switch program[i] {
