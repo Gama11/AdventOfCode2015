@@ -1,5 +1,6 @@
 import days.*;
 import days.Day21;
+import days.Day22;
 import sys.io.File;
 import utest.ITest;
 import utest.UTest;
@@ -232,5 +233,19 @@ class Tests implements ITest {
 		var boss:Fighter = {hitPoints: 100, damage: 8, armor: 2};
 		91 == Day21.findMinimumGoldToWin(getData("day20"), boss);
 		158 == Day21.findMaximumGoldToLose(getData("day20"), boss);
+	}
+
+	function specDay22() {
+		var state = Day22.simulateBattle(10, 250, 13, 8, [Poison, MagicMissile]);
+		2 == state.playerHP;
+		24 == state.playerMana;
+		0 == state.bossHP;
+
+		var state = Day22.simulateBattle(10, 250, 14, 8, [Recharge, Shield, Drain, Poison, MagicMissile]);
+		1 == state.playerHP;
+		114 == state.playerMana;
+		-1 == state.bossHP;
+
+		1824 == Day22.findMinimumManaToWin(50, 500, 71, 10);
 	}
 }
