@@ -239,13 +239,14 @@ class Tests implements ITest {
 		var state = Day22.simulateBattle(10, 250, 13, 8, [Poison, MagicMissile]);
 		2 == state.playerHP;
 		24 == state.playerMana;
-		0 == state.bossHP;
+		0 >= state.bossHP;
 
 		var state = Day22.simulateBattle(10, 250, 14, 8, [Recharge, Shield, Drain, Poison, MagicMissile]);
 		1 == state.playerHP;
 		114 == state.playerMana;
-		-1 == state.bossHP;
+		0 >= state.bossHP;
 
-		1824 == Day22.findMinimumManaToWin(50, 500, 71, 10);
+		1824 == Day22.findMinimumManaToWin(50, 500, 71, 10, false);
+		1937 == Day22.findMinimumManaToWin(50, 500, 71, 10, true);
 	}
 }

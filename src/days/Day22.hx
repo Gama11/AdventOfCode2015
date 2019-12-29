@@ -3,7 +3,7 @@ package days;
 import AStar.Move;
 
 class Day22 {
-	public static function simulateTurn(state:State, spell:Spell, bossDamage:Int):Null<Move<State>> {
+	public static function simulateTurn(state:State, spell:Spell, bossDamage:Int, hardMode:Bool = false):Null<Move<State>> {
 		var playerHP = state.playerHP;
 		var playerMana = state.playerMana;
 		var bossHP = state.bossHP;
@@ -26,6 +26,13 @@ class Day22 {
 		}
 
 		// player turn
+		if (hardMode) {
+			playerHP--;
+			if (playerHP < 0) {
+				return null;
+			}
+		}
+
 		applyEffects();
 
 		var cost = 0;
@@ -78,7 +85,6 @@ class Day22 {
 		var state = new State([], 0, 0, 0, playerHP, playerMana, bossHP);
 		while (spells.length > 0) {
 			var move = simulateTurn(state, spells.shift(), bossDamage);
-			Sys.println(move);
 			if (move == null) {
 				return state;
 			}
@@ -87,11 +93,11 @@ class Day22 {
 		return state;
 	}
 
-	public static function findMinimumManaToWin(playerHP:Int, playerMana:Int, bossHP:Int, bossDamage:Int):Int {
+	public static function findMinimumManaToWin(playerHP:Int, playerMana:Int, bossHP:Int, bossDamage:Int, hardMode:Bool):Int {
 		return AStar.search([new State([], 0, 0, 0, playerHP, playerMana, bossHP)], s -> s.bossHP <= 0, s -> s.bossHP * 50, function(state) {
 			var moves = [];
 			for (spell in Type.allEnums(Spell)) {
-				var move = simulateTurn(state, spell, bossDamage);
+				var move = simulateTurn(state, spell, bossDamage, hardMode);
 				if (move != null) {
 					moves.push(move);
 				}
