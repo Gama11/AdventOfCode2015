@@ -256,4 +256,9 @@ class Tests implements ITest {
 		170 == Day23.execute(getData("day23-1"), 0)[B];
 		247 == Day23.execute(getData("day23-1"), 1)[B];
 	}
+
+	function specDay24() {
+		99 == Day24.findIdealQuantumEntanglement(getData("day24-0"));
+		10723906903 == Day24.findIdealQuantumEntanglement(getData("day24-1"));
+	}
 }
