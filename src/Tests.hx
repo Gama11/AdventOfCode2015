@@ -215,4 +215,13 @@ class Tests implements ITest {
 		3 == Day19.findFewestStepsForMedicine(getData("day19-2"));
 		200 == Day19.findFewestStepsForMedicine(getData("day19-1"));
 	}
+
+	@Ignored
+	function specDay20() {
+		1 == Day20.findLowestHouseNumber(10);
+		4 == Day20.findLowestHouseNumber(70);
+
+		776160 == Day20.findLowestHouseNumber(33100000);
+		786240 == Day20.findLowestHouseNumber2(33100000);
+	}
 }
