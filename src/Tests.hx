@@ -264,4 +264,9 @@ class Tests implements ITest {
 		44 == Day24.findIdealQuantumEntanglement(getData("day24-0"), 4);
 		74850409 == Day24.findIdealQuantumEntanglement(getData("day24-1"), 4);
 	}
+
+	function specDay25() {
+		1534922 == Day25.findCode(6, 5);
+		2650453 == Day25.findCode(2978, 3083);
+	}
 }
