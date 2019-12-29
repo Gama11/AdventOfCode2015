@@ -1,7 +1,7 @@
 package days;
 
 class Day19 {
-	static function parse(input:String) {
+	static function parse(input:String):Data {
 		var replacements = new Map<String, Array<String>>();
 		var lines = input.split("\n");
 		for (line in lines) {
@@ -43,9 +43,35 @@ class Day19 {
 		}
 		return molecules.count(i -> i);
 	}
+
+	public static function findFewestStepsForMedicine(input:String):Int {
+		var data = parse(input);
+		var medicine = data.medicine;
+		var inverted = new Map<String, String>();
+		for (molecule => options in data.replacements) {
+			for (option in options) {
+				if (inverted.exists(option)) {
+					throw 'not unambigious';
+				}
+				inverted[option] = molecule;
+			}
+		}
+		var longest = [for (molecule in inverted.keys()) molecule];
+		longest.sort((a, b) -> b.length - a.length);
+		// reduce
+		var steps = 0;
+		while (medicine != "e") {
+			for (replacement in longest) {
+				var parts = medicine.split(replacement);
+				medicine = parts.join(inverted[replacement]);
+				steps += parts.length - 1;
+			}
+		}
+		return steps;
+	}
 }
 
 private typedef Data = {
-	final replacements:Map<String, String>;
+	final replacements:Map<String, Array<String>>;
 	final medicine:String;
 }

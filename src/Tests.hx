@@ -199,6 +199,7 @@ class Tests implements ITest {
 		18 == Day17.countCombinationsWithLeastContainers(getData("day17-1"), 150);
 	}
 
+	@Ignored
 	function specDay18() {
 		4 == Day18.countLitLights(getData("day18-0"), 4, false);
 		814 == Day18.countLitLights(getData("day18-1"), 100, false);
@@ -210,5 +211,8 @@ class Tests implements ITest {
 	function specDay19() {
 		4 == Day19.countDistinctMolecules(getData("day19-0"));
 		518 == Day19.countDistinctMolecules(getData("day19-1"));
+
+		3 == Day19.findFewestStepsForMedicine(getData("day19-2"));
+		200 == Day19.findFewestStepsForMedicine(getData("day19-1"));
 	}
 }
