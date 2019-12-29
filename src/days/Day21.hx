@@ -36,7 +36,7 @@ class Day21 {
 		};
 	}
 
-	public static function findMinimumGoldToWin(input:String, boss:Fighter):Int {
+	static function simulatePossibleFights(input:String, boss:Fighter):Array<{equipment:Item, winner:Winner}> {
 		var shop = parse(input);
 		function emptyItem():Item {
 			return {
@@ -58,7 +58,7 @@ class Day21 {
 			};
 		}
 
-		var minGold = null;
+		var results = [];
 		for (weapon in shop.weapons) {
 			for (armor in shop.armor) {
 				for (ring1 in shop.rings) {
@@ -72,14 +72,23 @@ class Day21 {
 							damage: equipment.damage,
 							armor: equipment.armor
 						};
-						if (findWinner(player, Reflect.copy(boss)) == Player && (minGold == null || equipment.cost < minGold)) {
-							minGold = equipment.cost;
-						}
+						results.push({
+							equipment: equipment,
+							winner: findWinner(player, Reflect.copy(boss))
+						});
 					}
 				}
 			}
 		}
-		return minGold;
+		return results;
+	}
+
+	public static function findMinimumGoldToWin(input:String, boss:Fighter):Int {
+		return simulatePossibleFights(input, boss).filter(fight -> fight.winner == Player).min(fight -> fight.equipment.cost).value;
+	}
+
+	public static function findMaximumGoldToLose(input:String, boss:Fighter) {
+		return simulatePossibleFights(input, boss).filter(fight -> fight.winner == Boss).max(fight -> fight.equipment.cost).value;
 	}
 }
 

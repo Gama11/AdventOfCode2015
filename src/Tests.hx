@@ -228,6 +228,9 @@ class Tests implements ITest {
 
 	function specDay21() {
 		Player == Day21.findWinner({hitPoints: 8, damage: 5, armor: 5}, {hitPoints: 12, damage: 7, armor: 2});
-		91 == Day21.findMinimumGoldToWin(getData("day20"), {hitPoints: 100, damage: 8, armor: 2});
+
+		var boss:Fighter = {hitPoints: 100, damage: 8, armor: 2};
+		91 == Day21.findMinimumGoldToWin(getData("day20"), boss);
+		158 == Day21.findMaximumGoldToLose(getData("day20"), boss);
 	}
 }
