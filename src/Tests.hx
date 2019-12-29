@@ -258,7 +258,10 @@ class Tests implements ITest {
 	}
 
 	function specDay24() {
-		99 == Day24.findIdealQuantumEntanglement(getData("day24-0"));
-		10723906903 == Day24.findIdealQuantumEntanglement(getData("day24-1"));
+		99 == Day24.findIdealQuantumEntanglement(getData("day24-0"), 3);
+		10723906903 == Day24.findIdealQuantumEntanglement(getData("day24-1"), 3);
+
+		44 == Day24.findIdealQuantumEntanglement(getData("day24-0"), 4);
+		74850409 == Day24.findIdealQuantumEntanglement(getData("day24-1"), 4);
 	}
 }
