@@ -1,6 +1,7 @@
 import days.*;
 import days.Day21;
 import days.Day22;
+import days.Day23;
 import sys.io.File;
 import utest.ITest;
 import utest.UTest;
@@ -248,5 +249,10 @@ class Tests implements ITest {
 
 		1824 == Day22.findMinimumManaToWin(50, 500, 71, 10, false);
 		1937 == Day22.findMinimumManaToWin(50, 500, 71, 10, true);
+	}
+
+	function specDay23() {
+		2 == Day23.execute(getData("day23-0"))[A];
+		170 == Day23.execute(getData("day23-1"))[B];
 	}
 }
